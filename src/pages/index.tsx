@@ -20,6 +20,7 @@ const Home: NextPage = () => {
           </p>
           <SubscribeButton />
         </section>
+        
         <img src="/images/girl.svg" alt="Garota Programando" />
       </main>
     </>
