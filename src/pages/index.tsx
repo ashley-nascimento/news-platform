@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { Header } from '../components/Header'
 import { SubscribeButton } from '../components/SubscribeButton'
 import { stripe } from '../services/stripe'
 import styles from '../styles/home.module.scss'
@@ -18,7 +17,6 @@ export default function Home({ product }: HomeProps) {
       <Head>
         <title>Início | Plataforma de Notícias</title>
       </Head>
-      <Header/>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
           <span>👋 Hey, bem-vindo(a)</span>
