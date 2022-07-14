@@ -11,7 +11,7 @@ export function SignInButton(){
             type="button"
             className={styles.signInButton}
         >
-            <FaGithub color="#C2F784" />
+            <FaGithub color="#24B472" />
             {session?.user?.name}
             <FiX 
                 color="#A8A8B3" 
@@ -25,7 +25,7 @@ export function SignInButton(){
             className={styles.signInButton}
             onClick={() => signIn('github')}
         >
-            <FaGithub color="#FFF47D" />
+            <FaGithub color="#ECA318" />
             Entre com o Github
         </button>
         
