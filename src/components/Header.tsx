@@ -5,7 +5,7 @@ export function Header(){
     return(
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
-                <img src="/images/logo.svg" alt="React News" />
+                <img src="/images/logo.svg" alt="React News " />
                 <nav>
                     <a href="#" className={styles.active}>Início</a>
                     <a href="#">Postagens</a>
