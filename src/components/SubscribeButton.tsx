@@ -10,7 +10,9 @@ export function SubscribeButton(){
             return
         }
 
-         
+        //  stripe.checkout.sessions.create
+
+        
 
     }
 
