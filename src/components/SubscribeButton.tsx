@@ -1,18 +1,24 @@
 import { signIn, useSession } from 'next-auth/react'
+import { api } from '../services/api'
 import styles from '../styles/subscribeButton.module.scss'
 
 export function SubscribeButton(){
     const { data: session } = useSession()
 
-    function handleSubscribe(){
+    async function handleSubscribe(){
         if(!session){
             signIn('github')
             return
         }
 
-        //  stripe.checkout.sessions.create
+        try{ 
+            const response = await api.post('subscribe')
 
-        
+            const { sessionId } = response.data
+        }
+        catch{
+
+        }
 
     }
 
