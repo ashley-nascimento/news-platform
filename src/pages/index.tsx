@@ -15,7 +15,7 @@ export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Início | Plataforma de Notícias</title>
+        <title>Início | React News</title>
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
