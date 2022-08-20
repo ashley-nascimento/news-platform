@@ -1,15 +1,15 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { Readable } from "stream";
-import Stripe from "stripe";
-import { stripe } from "../../services/stripe";
-import { saveSubscription } from "./_lib/manageSubscription";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { Readable } from 'stream';
+import Stripe from 'stripe';
+import { stripe } from '../../services/stripe';
+import { saveSubscription } from './_lib/manageSubscription';
 
 async function buffer(readable: Readable) {
     const chunks = [];
 
     for await(const chunk of readable){
         chunks.push(
-            typeof chunk === "string" ? Buffer.from(chunk) : chunk
+            typeof chunk === 'string' ? Buffer.from(chunk) : chunk
         )
     }
 
@@ -34,7 +34,11 @@ export default async (req: NextApiRequest, res:NextApiResponse) => {
         let event: Stripe.Event
 
         try{
-            event = stripe.webhooks.constructEvent(buf, secret!, process.env.STRIPE_WEBHOOK_SECRET!)
+            event = stripe.webhooks.constructEvent(
+                buf,
+                secret!,
+                process.env.STRIPE_WEBHOOK_SECRET!
+              )
         }
         catch(err){
             if(err instanceof Error){
@@ -53,7 +57,7 @@ export default async (req: NextApiRequest, res:NextApiResponse) => {
 
                     await saveSubscription(
                         checkoutSession!.subscription!.toString(),
-                        checkoutSession!.customer!.toString()
+                        checkoutSession!.customer!.toString(),
                     )
                         break
                     default:
@@ -65,6 +69,7 @@ export default async (req: NextApiRequest, res:NextApiResponse) => {
                     return res.json({error: 'Webhook handler failed.'})
                 }
             }
+
             console.log('Evento recebido', event!)
         }
 
