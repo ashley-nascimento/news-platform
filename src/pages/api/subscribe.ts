@@ -27,9 +27,9 @@ export default async (req: NextApiRequest, res: NextApiResponse)=>{
             )
         )
 
-        let custumerId = user.data.stripe_customer_id
+        let customerId = user.data.stripe_customer_id
 
-        if(!custumerId){
+        if(!customerId){
             const stripeCustomer = await stripe.customers.create({
                 email: session!.user!.email!
                 // metadata
@@ -44,11 +44,11 @@ export default async (req: NextApiRequest, res: NextApiResponse)=>{
                 )
             )
 
-            custumerId = stripeCustomer.id
+            customerId = stripeCustomer.id
         }
 
         const stripeCheckoutSession = await stripe.checkout.sessions.create({
-            customer: custumerId,
+            customer: customerId,
             payment_method_types: ['card'],
             billing_address_collection: 'required',
             line_items: [{
