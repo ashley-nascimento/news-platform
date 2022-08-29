@@ -28,8 +28,6 @@ export async function saveSubscription(
       err.errors()[0].description,
     ))
 
-    console.log(userRef)
-
     const subscription = await stripe.subscriptions.retrieve(subscriptionId)
 
     const subscriptionData = {
