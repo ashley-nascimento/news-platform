@@ -25,7 +25,7 @@ export async function saveSubscription(
       'Error: [%s] %s: %s',
       err.name,
       err.message,
-      err.errors()[0].description,
+      err.errors()[0].description
     ))
 
     const subscription = await stripe.subscriptions.retrieve(subscriptionId)
